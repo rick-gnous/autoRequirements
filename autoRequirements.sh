@@ -10,7 +10,9 @@
 path=${1:-.}
 
 INDEX=0
+echo 'Récupération des packets installés sur la machine...'
 installedPackage=($(pip3 freeze))
+echo 'Fait.'
 packagePutInReq=()
 
 # ========================================================================= # 
@@ -63,7 +65,7 @@ checkContains() {
     return 1
 }
 
-echo 'Récupération des packets à installés...'
+echo 'Récupération des packets à installer...'
 for file in $(find $path -iname "*.py"); do
     # boucle sur les lines qui commencent par import ou from. Vous pouvez voir la commande utilisée
     # à la fin de la boucle
