@@ -85,6 +85,23 @@ echo 'Fait.'
 
 echo 'Création et insertion des packets dans requirements.txt...'
 pathRequirement=$path'/requirements.txt'
+if [[ -e $pathRequirement ]]; then
+    read -p "Le fichier requirements.txt existe déjà. Voulez-vous l'(E)ffacer, faire un (B)ackup ou (A)nnuler l'opération ?" checkFile
+    case "$checkFile" in
+        E | e )
+            echo 'Suppression du fichier...'
+            rm $pathRequirement
+        ;;
+        B | b )
+            echo 'Backup du fichier...'
+            mv $pathRequirement $pathRequirement'.backup'
+        ;;
+        *)
+            echo 'Annulation...'
+            exit
+    esac
+fi
+
 touch pathRequirement
 for package in "${packagePutInReq[@]}"; do
     echo $package >> $pathRequirement
