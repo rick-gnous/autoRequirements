@@ -99,6 +99,7 @@ if [[ -e $pathRequirement ]]; then
         *)
             echo 'Annulation...'
             exit
+        ;;
     esac
 fi
 
